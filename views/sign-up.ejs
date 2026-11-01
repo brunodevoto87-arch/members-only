@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <% if (typeof error !== 'undefined') { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/sign-up" method="POST">
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <label for="full_name">Nombre Completo</label>
+        <input id="full_name" name="full_name" placeholder="full_name" type="text" />
+        <label for="confirm_password">Confirmar contraseña</label>
+        <input id="confirm_password" name="confirm_password" type="password" minlength="8" />
+        <button type="submit">Sign Up</button>
+        <p>Si ya posee cuenta, loguee aqui <a href="/login">Log in</a></p>
+    </form>
+</body>
+</html>

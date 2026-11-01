@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <% if (user) { %>
+        <p>Bienvenido, <%= user.username %>!</p>
+        <form action="/logout" method="POST">
+            <button type="submit">Cerrar sesion</button>
+        </form>
+        <a href="/secreto">Pagina secreta</a>
+        <a href="/join-club">Unirse al Club</a>
+        <a href="/new-message">Crear un nuevo mensaje</a>
+
+    <% }
+    else { %>
+        <p>No estas Logueado.</p>
+        <a href="/login">Iniciar Sesion</a>
+        <a href="/sign-up">Crear cuenta</a>
+    <% } %>
+    <% messages.forEach(message => { %>
+  <div class="message-card">
+    <h2><%= message.title %></h2>
+    <p><%= message.text %></p>
+
+    <% if (user && user.is_member) { %>
+      <p class="message-meta">Escrito por: <%= message.full_name %> el <%= message.timestamp %></p>
+      
+    <% } else { %>
+      <p class="message-meta">Escrito por: Anónimo</p>
+    <% } %>
+
+    <% if (user && user.is_admin) { %>
+      <form action="/delete/<%= message.id %>" method="POST" style="margin-top: 10px;">
+        <button type="submit" class="btn btn-delete">Eliminar mensaje</button>
+      </form>
+    <% } %>
+  </div>
+  </div>
+<% }) %>
+</body>
+</html>

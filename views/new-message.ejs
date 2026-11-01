@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear nuevo Mensaje</title>
+</head>
+<body>
+    <h1>Crear nuevo Mensaje</h1>
+    <form action="/new-message" method="POST">
+        <div>
+            <label for="title">Titulo:</label>
+            <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+            <label for="text">Mensaje:</label>
+            <textarea name="text" id="text" rows="5" cols="30" required></textarea>
+        </div>
+        <button type="submit">Publicar Mensaje</button>
+    </form>
+    <br>
+    <a href="/">Volver a inicio</a>
+</body>
+</html>
